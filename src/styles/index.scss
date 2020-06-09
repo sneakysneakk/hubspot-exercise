@@ -1,0 +1,94 @@
+$color-orange:  rgb(238, 117, 47);
+$color-white: #fff;
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.exercise-header {
+  padding: 1rem 0;
+  margin: 2rem 0;
+  text-align: center;
+  color: $color-white;
+  background-color: #00a4bd;
+}
+
+.testimonial {
+  background: #f8f8f8;
+  color: #777;
+  padding: 30px;
+
+  > div {
+    max-width: 810px;
+    margin: 0 auto;
+  
+    @media (min-width: 720px) {
+      display: flex;    
+      align-items: center;
+    }
+
+    > div {
+      padding: 30px 30px 0;
+
+      margin: 0 0 30px;
+      max-width: 500px;
+      position: relative;
+      border-left: 2px solid $color-orange;
+
+      &:before {
+        background-color: $color-orange;
+        border-radius: 50%;
+        border: 2px solid $color-white;
+        color: $color-white;
+        content: "\“";
+        display: block;
+        font-family: 'Times Roman', serif;
+        font-size: 55px;
+        height: 40px;
+        left: -22px;
+        line-height: 65px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 40px;
+      }
+  
+      &:after {
+        content: "";
+        height: 10px;
+        width: 10px;
+        background-color: $color-orange;
+        position: absolute;
+        left: -6px;
+        bottom: 0;
+        border-radius: 50%;
+      }
+
+      > p {
+        font-family: 'Roboto Slab', serif;
+        font-size: 20px;
+        line-height: 28px;
+        margin: 0 0 30px;
+      }
+
+      > span {
+        font-weight: 700;
+        font-size: 16px;
+      }
+    }
+
+    a {
+      display: inline-block;
+      border-radius: 3px;
+      background-color: #48a1dd;
+      color: $color-white;
+      padding: 20px 30px;
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
