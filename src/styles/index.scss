@@ -92,3 +92,12 @@ body {
     }
   }
 }
+
+.tile {
+  border: 1px solid grey;
+  width: 300px;
+
+  img {
+    max-width: 100%;
+  }
+}

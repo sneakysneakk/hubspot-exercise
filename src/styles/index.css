@@ -84,4 +84,12 @@ body {
   font-weight: 700;
 }
 
+.tile {
+  border: 1px solid grey;
+  width: 300px;
+}
+.tile img {
+  max-width: 100%;
+}
+
 /*# sourceMappingURL=index.css.map */

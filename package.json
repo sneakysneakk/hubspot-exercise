@@ -6,18 +6,23 @@
   "scripts": {
     "dev": "parcel src/views/index.html --open --out-dir build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "parcel build src/index.html --out-dir build"
+    "prod": "parcel build src/index.html --out-dir build",
+    "styles": "sass --watch src/styles/index.scss src/styles/index.css"
   },
   "author": "HubSpot Applicant",
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "parcel-bundler": "^1.12.3"
+    "axios": "^0.19.2",
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.10.4",
     "sass": "^1.26.8"
   }
 }
