@@ -57,7 +57,7 @@ const App = () => {
   const [ filters, setFilters ] = useState({
     year: "",
     type: "",
-    // genre: "",
+    genre: "",
   })
 
   useEffect(() => {
@@ -84,16 +84,15 @@ const App = () => {
   };
 
   const applyFilters = () => {
-    console.log('filters', filters);
+
     const filterKeys = Object.keys(filters);
 
     return originalData.filter(item => {
       return filterKeys.every(key => {
-        // if (typeof filters[key] !== 'function') return true;
-        // return filters[key](item[key]);
+        if (!filters[key].length) return true;
+        return item[key].includes(filters[key]);
       })
     })
-    // return;
   };
 
   const resetFilters = (e) => {
@@ -101,13 +100,16 @@ const App = () => {
     setFilters({
       year: "",
       type: "",
-      // genre: "",
+      genre: "",
     });
+  }
+
+  const search = (e) => {
+    console.log('e', e);
   }
 
   return (
     <>
-    
       { loading && 
         <div>
           Loading
@@ -115,9 +117,6 @@ const App = () => {
       }
       { !loading && 
       <>
-
-      {console.log('filtered', filteredData)}
-
         <Dropdown
           options={years}
           addFilter={addFilter}
@@ -130,6 +129,8 @@ const App = () => {
           field="genre"
           value={filters.genre}
         />
+
+        <input type="text" onChange={e=>search(e)}/>
 
         <button onClick={(e=>resetFilters(e))}>Clear filters</button>
         
@@ -146,7 +147,7 @@ const App = () => {
           <label htmlFor="movieradio">Movies</label>
         </div>
         
-
+        { !filteredData.length && ( <h2>No results</h2>)}
         { filteredData && filteredData.map((item) => (
           <Tile
             key={item.title}
