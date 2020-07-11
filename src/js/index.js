@@ -84,7 +84,6 @@ const App = () => {
   };
 
   const applyFilters = () => {
-
     const filterKeys = Object.keys(filters);
 
     return originalData.filter(item => {
@@ -104,8 +103,16 @@ const App = () => {
     });
   }
 
-  const search = (e) => {
-    console.log('e', e);
+  const search = (term) => {
+    if (term.length < 3) return setFilteredData(applyFilters());
+    console.log('shouldnt come here');
+    const searchResults = filteredData.filter(item => {
+    return item.title.toLowerCase().includes(term);
+  });
+    console.log('searchResults', searchResults);
+
+    setFilteredData(searchResults);
+
   }
 
   return (
@@ -130,7 +137,7 @@ const App = () => {
           value={filters.genre}
         />
 
-        <input type="text" onChange={e=>search(e)}/>
+        <input type="text" onChange={e=>search(e.target.value)}/>
 
         <button onClick={(e=>resetFilters(e))}>Clear filters</button>
         

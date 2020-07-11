@@ -87,6 +87,7 @@ body {
 .tile {
   border: 1px solid grey;
   width: 300px;
+  float: left;
 }
 .tile img {
   max-width: 100%;
