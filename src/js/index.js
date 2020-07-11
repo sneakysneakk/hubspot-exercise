@@ -56,8 +56,8 @@ const App = () => {
   const [ genres, setGenres ] = useState([]);
   const [ filters, setFilters ] = useState({
     year: "",
-    type: "",
     genre: "",
+    type: "",
   })
 
   useEffect(() => {
@@ -98,14 +98,13 @@ const App = () => {
     e.preventDefault();
     setFilters({
       year: "",
-      type: "",
       genre: "",
+      type: "",
     });
   }
 
   const search = (term) => {
     if (term.length < 3) return setFilteredData(applyFilters());
-    console.log('shouldnt come here');
     const searchResults = filteredData.filter(item => {
     return item.title.toLowerCase().includes(term);
   });
