@@ -122,8 +122,8 @@ button:hover {
   border-right: 2px solid #333;
   position: absolute;
   transform: rotate(45deg);
-  right: 30px;
-  top: 9px;
+  right: 20px;
+  top: 10px;
 }
 
 .button--plain {
@@ -133,7 +133,6 @@ button:hover {
   min-height: 20px;
   padding: 0;
   text-decoration: underline;
-  text-align: right;
 }
 .button--plain:hover {
   color: #ee752f;
@@ -144,8 +143,13 @@ button:hover {
   border: 1px solid #333;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  max-width: 1000px;
-  margin: 0 auto 50px;
+  max-width: 940px;
+  margin: 0 10px 50px;
+}
+@media (min-width: 940px) {
+  .filterable-content {
+    margin: 0 auto 50px;
+  }
 }
 .filterable-content__header {
   border-bottom: 1px solid #333;
@@ -160,14 +164,13 @@ button:hover {
     grid-template-columns: auto auto;
   }
 }
-.filterable-content__filters button:first-child {
+.filterable-content__filters .dropdown:first-child {
   margin-right: 20px;
 }
 .filterable-content__items {
   display: grid;
   grid-template-columns: auto;
   align-content: space-around;
-  min-height: 400px;
   list-style: none;
   margin: 0;
   padding: 10px;
@@ -183,10 +186,10 @@ button:hover {
     justify-content: space-between;
   }
 }
-.filterable-content__clear {
-  text-align: right;
-}
 @media (min-width: 650px) {
+  .filterable-content__clear {
+    text-align: right;
+  }
   .filterable-content__clear button {
     text-align: right;
   }
@@ -194,6 +197,7 @@ button:hover {
 .filterable-content__no-results {
   text-align: center;
   padding: 50px;
+  min-height: 500px;
 }
 
 .search-field {
@@ -282,6 +286,7 @@ button:hover {
   top: 50px;
   display: none;
   height: 265px;
+  z-index: 1;
 }
 .dropdown__menu--open {
   display: inline-block;

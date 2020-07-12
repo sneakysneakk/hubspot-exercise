@@ -144,8 +144,8 @@ button:hover {
     border-right: 2px solid $color-grey;
     position: absolute;
     transform: rotate(45deg);
-    right: 30px;
-    top: 9px;
+    right: 20px;
+    top: 10px;
   }
 }
 
@@ -156,7 +156,7 @@ button:hover {
   min-height: 20px;
   padding: 0;
   text-decoration: underline;
-  text-align: right;
+
   &:hover {
     color: $color-orange;
     background-color: transparent;
@@ -167,8 +167,13 @@ button:hover {
   border: 1px solid $color-grey;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  max-width: 1000px;
-  margin: 0 auto 50px;
+  max-width: 940px;
+  margin: 0 10px 50px;
+
+
+  @media (min-width: $breakpoint-medium) {
+    margin: 0 auto 50px;
+  }
 
   &__header {
     border-bottom: 1px solid $color-grey;
@@ -183,7 +188,7 @@ button:hover {
     }
   }
 
-  &__filters button:first-child {
+  &__filters .dropdown:first-child {
     margin-right: 20px;
   }
 
@@ -192,7 +197,7 @@ button:hover {
     grid-template-columns: auto;
     align-content: space-around;
 
-    min-height: 400px;
+    // min-height: 530px;
     list-style: none;
     margin: 0;
     padding: 10px;
@@ -207,8 +212,10 @@ button:hover {
   }
 
   &__clear {
-    text-align: right;
+
     @media (min-width: $breakpoint-small) {
+      text-align: right;
+
       button {
         text-align: right;
       }
@@ -218,6 +225,7 @@ button:hover {
   &__no-results {
     text-align: center;
     padding: 50px;
+    min-height: 500px;
   }
 }
 
@@ -313,6 +321,7 @@ button:hover {
     top: 50px;
     display: none;
     height: 265px;
+    z-index: 1;
 
     &--open {
       display: inline-block;

@@ -15,7 +15,7 @@ const getGenreSet = (data) => {
   return [...genreSet].sort();
 };
 
-const App = () => {
+export const App = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [loading, setLoading] = useState(true);

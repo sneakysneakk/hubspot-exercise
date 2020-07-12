@@ -20,7 +20,7 @@ const Tile = ({ content: { poster, title, year, genre } }) => {
           />
         )}
         <div>{`${title} (${year})`}</div>
-        <div class="tile__genres">{`Genres: ${formattedGenres}`}</div>
+        <div className="tile__genres">{`Genres: ${formattedGenres}`}</div>
       </div>
     </li>
   );
