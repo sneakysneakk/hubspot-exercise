@@ -1,4 +1,4 @@
-$color-orange:  rgb(238, 117, 47);
+$color-orange: rgb(238, 117, 47);
 $color-white: #fff;
 $color-blue: #00a4bd;
 $color-otherblue: #48a1dd;
@@ -11,12 +11,12 @@ $breakpoint-large: 1300px;
 
 // global styles
 
-* { 
+* {
   box-sizing: border-box;
 }
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .exercise-header {
@@ -27,7 +27,6 @@ body {
   background-color: $color-blue;
 }
 
-
 // exercise 1
 body > div:nth-child(2) {
   background: #f8f8f8;
@@ -37,9 +36,9 @@ body > div:nth-child(2) {
   > div {
     max-width: 810px;
     margin: 0 auto;
-  
+
     @media (min-width: 720px) {
-      display: flex;    
+      display: flex;
       align-items: center;
     }
 
@@ -58,7 +57,7 @@ body > div:nth-child(2) {
         color: $color-white;
         content: "\“";
         display: block;
-        font-family: 'Times Roman', serif;
+        font-family: "Times Roman", serif;
         font-size: 55px;
         height: 40px;
         left: -22px;
@@ -68,7 +67,7 @@ body > div:nth-child(2) {
         top: 0;
         width: 40px;
       }
-  
+
       &:after {
         content: "";
         height: 10px;
@@ -81,7 +80,7 @@ body > div:nth-child(2) {
       }
 
       > p {
-        font-family: 'Roboto Slab', serif;
+        font-family: "Roboto Slab", serif;
         font-size: 20px;
         line-height: 28px;
         margin: 0 0 30px;
@@ -119,14 +118,13 @@ button {
   background: #f3f3f3;
   box-shadow: 0 3px $color-silver;
   color: $color-grey;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   text-align: left;
   text-transform: uppercase;
-  transition: background 250ms ease-in-out, 
-  transform 150ms ease;
+  transition: background 250ms ease-in-out, transform 150ms ease;
   min-width: 140px;
   min-height: 35px;
   -webkit-appearance: none;
@@ -137,9 +135,9 @@ button:hover {
   background: $color-silver;
 }
 
-.button--arrow { 
-  &:after { 
-    content: '';
+.button--arrow {
+  &:after {
+    content: "";
     height: 10px;
     width: 10px;
     border-bottom: 2px solid $color-grey;
@@ -163,11 +161,11 @@ button:hover {
     color: $color-orange;
     background-color: transparent;
   }
-};
+}
 
 .filterable-content {
   border: 1px solid $color-grey;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   max-width: 1000px;
   margin: 0 auto 50px;
@@ -181,7 +179,7 @@ button:hover {
     row-gap: 30px;
 
     @media (min-width: $breakpoint-small) {
-      grid-template-columns: auto auto ;
+      grid-template-columns: auto auto;
     }
   }
 
@@ -200,7 +198,7 @@ button:hover {
     padding: 10px;
 
     @media (min-width: $breakpoint-small) {
-      grid-template-columns: auto auto ;
+      grid-template-columns: auto auto;
     }
     @media (min-width: $breakpoint-medium) {
       grid-template-columns: auto auto auto;
@@ -227,7 +225,7 @@ button:hover {
   position: relative;
 
   &:before {
-    content: '';
+    content: "";
     height: 10px;
     width: 10px;
     border-radius: 10px;
@@ -237,7 +235,7 @@ button:hover {
     top: 9px;
   }
   &:after {
-    content: '';
+    content: "";
     height: 4px;
     transform: rotate(-45deg);
     border: 1px solid $color-grey;
@@ -251,7 +249,6 @@ button:hover {
     height: 35px;
     width: 100%;
     padding: 10px 35px 10px 10px;
-
 
     @media (min-width: $breakpoint-small) {
       grid-template-columns: auto auto;
@@ -279,7 +276,6 @@ button:hover {
     min-height: 400px;
     border: 1px solid grey;
 
-
     &--default {
       color: $color-white;
       padding: 20px;
@@ -295,13 +291,12 @@ button:hover {
   font-weight: 700;
   text-transform: capitalize;
   margin-right: 10px;
-  
 }
 
 .dropdown {
   position: relative;
   float: left;
-  
+
   &__scrollarea {
     position: relative;
     height: 265px;
@@ -321,10 +316,10 @@ button:hover {
 
     &--open {
       display: inline-block;
-    };
+    }
 
     &:before {
-      content: '';
+      content: "";
       border-left: 12px solid transparent;
       border-right: 12px solid transparent;
       border-bottom: 12px solid $color-silver;
@@ -333,7 +328,7 @@ button:hover {
       top: -12px;
     }
     &:after {
-      content: '';
+      content: "";
       border-left: 11px solid transparent;
       border-right: 11px solid transparent;
       border-bottom: 11px solid $color-white;
@@ -362,7 +357,7 @@ button:hover {
     }
 
     &:before {
-      content: '';
+      content: "";
       display: inline-block;
       height: 10px;
       width: 10px;
@@ -376,8 +371,8 @@ button:hover {
 
   input {
     display: none;
-    
-    &:checked + label:before{
+
+    &:checked + label:before {
       background-color: $color-blue;
     }
   }
