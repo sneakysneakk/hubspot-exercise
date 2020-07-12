@@ -11,7 +11,9 @@ const Dropdown = ({
   }) =>  { 
   return (
     <div className="dropdown">
-    <button onClick={e=> openDropdown(e, field)} >
+    <button
+      className="button--arrow"
+      onClick={e=> openDropdown(e, field)} >
       {title}
     </button>
     <div className={`dropdown__menu ${ isOpen ? 'dropdown__menu--open' : ''}`}>

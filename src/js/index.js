@@ -70,8 +70,6 @@ const App = () => {
     }));
 
   const addFilter = (filter, field) => {
-   
-
     let newFilters = filters[field];
     let index = filters[field].indexOf(filter);
     if (index >= 0) {

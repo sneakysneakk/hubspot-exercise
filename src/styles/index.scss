@@ -109,7 +109,7 @@ button {
   padding: 5px;
   margin: 0;
   text-decoration: none;
-  background: #eee;
+  background: #f3f3f3;
   box-shadow: 0 3px #ccc;
   color: #333;
   font-family: 'Montserrat', sans-serif;
@@ -129,6 +129,20 @@ button {
 button:hover,
 button:focus {
   background: #ccc;
+}
+
+.button--arrow { 
+  &:after { 
+    content: '';
+    height: 10px;
+    width: 10px;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 30px;
+    top: 8px;
+  }
 }
 
 .button--plain {
