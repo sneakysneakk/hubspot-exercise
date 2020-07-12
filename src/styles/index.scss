@@ -173,39 +173,45 @@ button:hover {
   &__header {
     display: grid;
     grid-template-columns: auto auto;
+    // align-content: space-around;
+    justify-content: space-between;
     padding: 20px 15px;
+    row-gap: 30px;
   }
 
-  &__filters {
-    button {
-      margin-right: 10px;
-      margin-bottom: 50px;
-    }
-  }
-
-  &__search {
-    text-align: right;
+  &__filters button:first-child {
+    margin-right: 20px;
   }
 
   &__items {
     display: grid;
     grid-template-columns: auto;
-    min-height: 500px;
+    align-content: space-around;
+
+    min-height: 600px;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 20px;
+
 
     @media (min-width: $breakpoint-small) {
       grid-template-columns: auto auto auto;
+      justify-content: space-between;
+
     }
     @media (min-width: $breakpoint-medium) {
       grid-template-columns: auto auto auto;
     }
   }
+
+  &__clear { 
+    text-align: right;
+  }
 }
 
 .search-field {
   position: relative;
+  // text-align: right;
 
   &:before {
     content: '';
@@ -283,8 +289,6 @@ button:hover {
     position: absolute;
     left: 0;
     top: 50px;
-
-
     display: none;
 
     &--open {

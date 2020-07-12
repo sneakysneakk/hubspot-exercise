@@ -68,7 +68,6 @@ const App = () => {
     }, [dropdownOpen]);
   };  
 
-
   const sortFilteredData = (data) => {
     setFilteredData(data.sort((a, b) => a.title.localeCompare(b.title)));
   };
@@ -115,6 +114,7 @@ const App = () => {
 
         // return all as true if no filter set 
         if (!filters[key].length) return true;
+
         if (key == 'title') return item[key].toLowerCase().includes(filters[key].toLowerCase());
         if (key == 'genre') return item[key].some(x => filters[key].includes(x));
         
@@ -168,7 +168,16 @@ const App = () => {
             clickListener={clickOutsideListener}
           />
 
-          <div>
+        </div>
+
+        <div className="filterable-content__search">
+          <div className="search-field">
+            <input type="text" value={filters.title} onChange={e=>search(e.target.value)}/>
+          </div>
+        </div>  
+
+        
+        <div>
           { types.map(x => (
             <label className="radio">
               <input
@@ -181,14 +190,12 @@ const App = () => {
               {`${x}s`}
             </label>
           ))}
-          </div>
         </div>
-        <div className="filterable-content__search">
-          <div className="search-field">
-            <input type="text" value={filters.title} onChange={e=>search(e.target.value)}/>
-          </div>
+        <div className="filterable-content__clear">
           <button className="button--plain" onClick={(e=>resetFilters(e))}>Clear filters</button>
-        </div>       
+        </div>
+
+
       </div>
         <ul className="filterable-content__items">
         { !filteredData.length && ( <h2>No results</h2>)}

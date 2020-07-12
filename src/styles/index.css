@@ -148,32 +148,35 @@ button:hover {
 .filterable-content__header {
   display: grid;
   grid-template-columns: auto auto;
+  justify-content: space-between;
   padding: 20px 15px;
+  row-gap: 30px;
 }
-.filterable-content__filters button {
-  margin-right: 10px;
-  margin-bottom: 50px;
-}
-.filterable-content__search {
-  text-align: right;
+.filterable-content__filters button:first-child {
+  margin-right: 20px;
 }
 .filterable-content__items {
   display: grid;
   grid-template-columns: auto;
-  min-height: 500px;
+  align-content: space-around;
+  min-height: 600px;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 20px;
 }
 @media (min-width: 768px) {
   .filterable-content__items {
     grid-template-columns: auto auto auto;
+    justify-content: space-between;
   }
 }
 @media (min-width: 1300px) {
   .filterable-content__items {
     grid-template-columns: auto auto auto;
   }
+}
+.filterable-content__clear {
+  text-align: right;
 }
 
 .search-field {
