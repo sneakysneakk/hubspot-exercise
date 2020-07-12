@@ -1,52 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 
+import Tile from './components/Tile'
+import Dropdown from './components/Dropdown'
+
 import '../styles/index.css';
 
-const getUniqueSet = (data, field) => [...new Set(data.map(obj => obj[field]))];
+const getUniqueSet = (data, field) => [...new Set(data.map(obj => obj[field]))].sort();
 
 const getGenreSet = (data) => {
   const genreSet = new Set();
   data.forEach(arr => 
     arr.genre.forEach(x => genreSet.add(x))
   );
-  return [...genreSet];
-}
-
-const Tile = ({
-  content: {
-    poster,
-    title,
-    year,
-    genre,
-  }}) => (
-  <div className="tile">
-    <img src={poster} />
-    <div>{`${title} (${year})`}</div>
-    <div>Genres: 
-      { genre }
-    </div>
-  </div>
-);
-
-const Dropdown = ({ options, addFilter, field, value }) =>  { 
-  return (
-  <select value={value} onChange={ e => addFilter(e.target.value, field)}>
-     <option
-        key="blank"
-        value=""
-      ></option>
-    { options && options.map(option => (
-      <option
-        key={option}
-        value={option}
-      >
-        {option}
-      </option>
-    ))}
-  </select>
-)};
-
+  return [...genreSet].sort();
+};
 
 const App = () => {
   const [ filteredData, setFilteredData ] = useState([]);
@@ -54,10 +22,14 @@ const App = () => {
   const [ loading, setLoading ] = useState(true);
   const [ years, setYears ] = useState([]);
   const [ genres, setGenres ] = useState([]);
+  const [ dropdownOpen, setDropdownOpen ] = useState({
+    year: false,
+    genre: false,
+  });
   const [ filters, setFilters ] = useState({
-    year: "",
-    genre: "",
-    type: "",
+    year: [],
+    genre: [],
+    type: [],
   })
 
   useEffect(() => {
@@ -67,7 +39,7 @@ const App = () => {
       setYears(getUniqueSet(json.media, 'year'));
       setGenres(getGenreSet(json.media));
       setOriginalData(json.media);
-      setFilteredData(json.media);
+      sortFilteredData(json.media);
       setLoading(false);
     });
   }, []);
@@ -76,46 +48,73 @@ const App = () => {
     setFilteredData(applyFilters());
   }, [filters]);
 
+  const sortFilteredData = (data) => {
+    setFilteredData(data.sort((a, b) => a.title.localeCompare(b.title)));
+  };
+
+  const openDropdown = (e, field) => {
+    e.preventDefault();
+    setDropdownOpen({
+      year: false,
+      genre: false,
+      [field]: true,
+    })
+  };
+
   const addFilter = (filter, field) => {
+    if (field === 'type') {
+      return setFilters({
+        ...filters,
+        type: [filter],
+      });
+    }
+
+    let newFilters = filters[field];
+    let index = filters[field].indexOf(filter);
+    if (index >= 0) {
+      newFilters.splice(index, 1)
+    } else {
+      newFilters.push(filter);
+    };
     setFilters({
       ...filters,
-      [field]: filter,
+      [field]: newFilters,
     });
   };
 
   const applyFilters = () => {
     const filterKeys = Object.keys(filters);
-
     return originalData.filter(item => {
       return filterKeys.every(key => {
+        // return all as true if no filter set 
         if (!filters[key].length) return true;
-        return item[key].includes(filters[key]);
-      })
-    })
+
+        // Product field could be a string or an array 
+        if (typeof item[key] == 'string') return filters[key].includes(item[key]);
+        return item[key].some(x => filters[key].includes(x));
+      });
+    });
   };
 
   const resetFilters = (e) => {
     e.preventDefault();
     setFilters({
-      year: "",
-      genre: "",
-      type: "",
+      year: [],
+      genre: [],
+      type: [],
     });
-  }
+  };
 
   const search = (term) => {
-    if (term.length < 3) return setFilteredData(applyFilters());
+    if (term.length < 3) return sortFilteredData(applyFilters());
     const searchResults = filteredData.filter(item => {
-    return item.title.toLowerCase().includes(term);
-  });
-    console.log('searchResults', searchResults);
-
-    setFilteredData(searchResults);
-
-  }
+      return item.title.toLowerCase().includes(term);
+    });
+    sortFilteredData(searchResults);
+  };
 
   return (
-    <>
+    <div className="filterable-content">
       { loading && 
         <div>
           Loading
@@ -123,36 +122,53 @@ const App = () => {
       }
       { !loading && 
       <>
-        <Dropdown
-          options={years}
-          addFilter={addFilter}
-          field="year"
-          value={filters.year}
-        />
-        <Dropdown
-          options={genres}
-          addFilter={addFilter}
-          field="genre"
-          value={filters.genre}
-        />
+      <div className="filterable-content__header">
+        <div className="filterable-content__filters">
+          <Dropdown
+            options={years}
+            addFilter={addFilter}
+            field="year"
+            value={filters.year}
+            title="Year"
+            openDropdown={openDropdown}
+            isOpen={dropdownOpen.year}
+            filters={filters.year}
+          />
+          <Dropdown
+            options={genres}
+            addFilter={addFilter}
+            field="genre"
+            value={filters.genre}
+            title="Genre"
+            openDropdown={openDropdown}
+            isOpen={dropdownOpen.genre}
+            filters={filters.genre}
+          />
+           <div onChange={(e)=> addFilter(e.target.value, 'type')}>
+            <input id="bookradio" type="radio" name="type" value="book" />
+            <label htmlFor="bookradio">Books</label>
+            <input id="movieradio" type="radio" name="type" value="movie" />
+            <label htmlFor="movieradio">Movies</label>
+          </div>
+        </div>
+        <div className="filterable-content__search">
+          <input type="text" onChange={e=>search(e.target.value)}/>
+          <div>
+            <button className="button--plain" onClick={(e=>resetFilters(e))}>Clear filters</button>
+          </div>
+        </div>
 
-        <input type="text" onChange={e=>search(e.target.value)}/>
-
-        <button onClick={(e=>resetFilters(e))}>Clear filters</button>
-        
+       
         {/* { data.types.map(x => (
           <>
             <input type="radio" name="type" value={x} />
             <label>{x}</label>
           </>
         ))} */}
-        <div onChange={(e)=> addFilter(e.target.value, 'type')}>
-          <input id="bookradio" type="radio" name="type" value="book" />
-          <label htmlFor="bookradio">Books</label>
-          <input id="movieradio" type="radio" name="type" value="movie" />
-          <label htmlFor="movieradio">Movies</label>
-        </div>
-        
+       
+      </div>
+       
+        <ul>
         { !filteredData.length && ( <h2>No results</h2>)}
         { filteredData && filteredData.map((item) => (
           <Tile
@@ -160,10 +176,11 @@ const App = () => {
             content={item}
           />
         ))}
+        </ul>
       </>
       }
      
-    </>
+    </div>
   );
 };
 

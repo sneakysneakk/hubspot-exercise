@@ -1,4 +1,51 @@
 @charset "UTF-8";
+button {
+  display: inline-block;
+  border: none;
+  padding: 5px;
+  margin: 0;
+  text-decoration: none;
+  background: #eee;
+  box-shadow: 0 3px #ccc;
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  text-transform: uppercase;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  min-width: 115px;
+  min-height: 35px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+  background: #ccc;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
+.button--plain {
+  background-color: transparent;
+  color: #00a4bd;
+  padding: 0;
+  text-decoration: underline;
+  box-shadow: none;
+}
+.button--plain:hover {
+  color: blue;
+  background-color: transparent;
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -84,10 +131,94 @@ body {
   font-weight: 700;
 }
 
+.filterable-content {
+  border: 1px solid grey;
+}
+.filterable-content__header {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 20px 15px;
+}
+.filterable-content__filters button {
+  margin-right: 10px;
+  margin-bottom: 50px;
+}
+.filterable-content__search {
+  text-align: right;
+}
+
+.dropdown {
+  position: relative;
+  float: left;
+}
+.dropdown__menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  display: none;
+}
+.dropdown__menu--open {
+  display: inline-block;
+}
+.dropdown__menu:before {
+  content: "";
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #ccc;
+  position: absolute;
+  left: 12px;
+  top: -12px;
+}
+.dropdown__menu:after {
+  content: "";
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid #fff;
+  position: absolute;
+  left: 13px;
+  top: -10px;
+}
+
+.checkbox {
+  border-top: 1px solid #ccc;
+}
+.checkbox:first-child {
+  border-top: none;
+}
+.checkbox label {
+  display: block;
+  padding: 10px 15px 10px 30px;
+  text-transform: uppercase;
+  position: relative;
+}
+.checkbox label:hover {
+  background-color: #eee;
+}
+.checkbox label:before {
+  content: "";
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  position: absolute;
+  left: 10px;
+  top: 12px;
+}
+.checkbox input {
+  display: none;
+}
+.checkbox input:checked + label:before {
+  background-color: #00a4bd;
+}
+
 .tile {
   border: 1px solid grey;
   width: 300px;
-  float: left;
 }
 .tile img {
   max-width: 100%;

@@ -11,6 +11,11 @@ Added some more checks for clean data - being able to see the data I knew it was
 
 Wouldn't like to manipulate the data that much client side 
 
+Close menu by clicking out 
+
+Debounce the search field 
+
+
 
 ## How did you deviate from the directions, if at all, and why?
 
