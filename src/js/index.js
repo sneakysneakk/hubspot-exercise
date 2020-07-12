@@ -146,17 +146,6 @@ const App = () => {
       <div className="filterable-content__header">
         <div className="filterable-content__filters">
           <Dropdown
-            options={years}
-            addFilter={addFilter}
-            field="year"
-            value={filters.year}
-            title="Year"
-            openDropdown={openDropdown}
-            isOpen={dropdownOpen.year}
-            filters={filters.year}
-            clickListener={clickOutsideListener}
-          />
-          <Dropdown
             options={genres}
             addFilter={addFilter}
             field="genre"
@@ -167,7 +156,17 @@ const App = () => {
             filters={filters.genre}
             clickListener={clickOutsideListener}
           />
-
+          <Dropdown
+            options={years}
+            addFilter={addFilter}
+            field="year"
+            value={filters.year}
+            title="Year"
+            openDropdown={openDropdown}
+            isOpen={dropdownOpen.year}
+            filters={filters.year}
+            clickListener={clickOutsideListener}
+          />
         </div>
 
         <div className="filterable-content__search">
@@ -194,11 +193,13 @@ const App = () => {
         <div className="filterable-content__clear">
           <button className="button--plain" onClick={(e=>resetFilters(e))}>Clear filters</button>
         </div>
-
-
       </div>
+
+      { !filteredData.length && ( 
+        <div className="filterable-content__no-results">No results!! Try again</div>
+      )}
+
         <ul className="filterable-content__items">
-        { !filteredData.length && ( <h2>No results</h2>)}
         { filteredData && filteredData.map((item) => (
           <Tile
             key={item.title}

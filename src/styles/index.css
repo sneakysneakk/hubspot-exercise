@@ -104,7 +104,7 @@ button {
   text-align: left;
   text-transform: uppercase;
   transition: background 250ms ease-in-out, transform 150ms ease;
-  min-width: 115px;
+  min-width: 140px;
   min-height: 35px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -128,10 +128,11 @@ button:hover {
 
 .button--plain {
   background-color: transparent;
+  box-shadow: none;
   color: #00a4bd;
+  min-height: 20px;
   padding: 0;
   text-decoration: underline;
-  box-shadow: none;
 }
 .button--plain:hover {
   color: #ee752f;
@@ -139,17 +140,18 @@ button:hover {
 }
 
 .filterable-content {
-  border: 1px solid grey;
+  border: 1px solid #333;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
 }
 .filterable-content__header {
+  border-bottom: 1px solid #333;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
-  padding: 20px 15px;
+  padding: 20px 20px 30px;
   row-gap: 30px;
 }
 .filterable-content__filters button:first-child {
@@ -159,10 +161,10 @@ button:hover {
   display: grid;
   grid-template-columns: auto;
   align-content: space-around;
-  min-height: 600px;
+  min-height: 400px;
   list-style: none;
   margin: 0;
-  padding: 20px;
+  padding: 10px;
 }
 @media (min-width: 768px) {
   .filterable-content__items {
@@ -177,6 +179,10 @@ button:hover {
 }
 .filterable-content__clear {
   text-align: right;
+}
+.filterable-content__no-results {
+  text-align: center;
+  padding: 50px;
 }
 
 .search-field {
@@ -243,6 +249,11 @@ button:hover {
   position: relative;
   float: left;
 }
+.dropdown__scrollarea {
+  position: relative;
+  height: 265px;
+  overflow: scroll;
+}
 .dropdown__menu {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -252,6 +263,7 @@ button:hover {
   left: 0;
   top: 50px;
   display: none;
+  height: 265px;
 }
 .dropdown__menu--open {
   display: inline-block;
@@ -283,7 +295,7 @@ button:hover {
 }
 .checkbox label {
   display: block;
-  padding: 10px 15px 10px 30px;
+  padding: 10px 25px 10px 50px;
   text-transform: uppercase;
   position: relative;
 }
@@ -298,7 +310,7 @@ button:hover {
   border: 1px solid grey;
   border-radius: 10px;
   position: absolute;
-  left: 10px;
+  left: 20px;
   top: 12px;
 }
 .checkbox input {

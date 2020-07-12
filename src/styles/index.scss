@@ -125,7 +125,7 @@ button {
   text-transform: uppercase;
   transition: background 250ms ease-in-out, 
   transform 150ms ease;
-  min-width: 115px;
+  min-width: 140px;
   min-height: 35px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -151,10 +151,11 @@ button:hover {
 
 .button--plain {
   background-color: transparent;
+  box-shadow: none;
   color: $color-blue;
+  min-height: 20px;
   padding: 0;
   text-decoration: underline;
-  box-shadow: none;
 
   &:hover {
     color: $color-orange;
@@ -164,18 +165,18 @@ button:hover {
 };
 
 .filterable-content {
-  border: 1px solid grey;
+  border: 1px solid $color-grey;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
 
   &__header {
+    border-bottom: 1px solid $color-grey;
     display: grid;
     grid-template-columns: auto auto;
-    // align-content: space-around;
     justify-content: space-between;
-    padding: 20px 15px;
+    padding: 20px 20px 30px;
     row-gap: 30px;
   }
 
@@ -188,10 +189,10 @@ button:hover {
     grid-template-columns: auto;
     align-content: space-around;
 
-    min-height: 600px;
+    min-height: 400px;
     list-style: none;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
 
 
     @media (min-width: $breakpoint-small) {
@@ -206,6 +207,11 @@ button:hover {
 
   &__clear { 
     text-align: right;
+  }
+
+  &__no-results {
+    text-align: center;
+    padding: 50px;
   }
 }
 
@@ -281,6 +287,12 @@ button:hover {
   position: relative;
   float: left;
   
+  &__scrollarea {
+    position: relative;
+    height: 265px;
+    overflow: scroll;
+  }
+
   &__menu {
     background-color: $color-white;
     border: 1px solid $color-silver;
@@ -290,12 +302,11 @@ button:hover {
     left: 0;
     top: 50px;
     display: none;
+    height: 265px;
 
     &--open {
       display: inline-block;
-
     };
-
 
     &:before {
       content: '';
@@ -327,7 +338,7 @@ button:hover {
 
   label {
     display: block;
-    padding: 10px 15px 10px 30px;
+    padding: 10px 25px 10px 50px;
     text-transform: uppercase;
     position: relative;
 
@@ -343,7 +354,7 @@ button:hover {
       border: 1px solid grey;
       border-radius: 10px;
       position: absolute;
-      left: 10px;
+      left: 20px;
       top: 12px;
     }
   }

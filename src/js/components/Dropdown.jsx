@@ -23,22 +23,25 @@ const Dropdown = ({
       {title}
     </button>
     <div className={`dropdown__menu ${ isOpen ? 'dropdown__menu--open' : ''}`}>
-      { options && options.map(option => (
-      <div
-        className="checkbox"
-        key={option} >
-          <input
-            id={option}
-            type="checkbox"
-            value={option}
-            checked={filters && filters.includes(option)}
-            onChange={e => addFilter(e.target.value, field)}
-          />
-          <label htmlFor={option}>
-            {option}
-          </label>
+      <div className="dropdown__scrollarea">
+        { options && options.map(option => (
+        <div
+          className="checkbox"
+          key={option} >
+            <input
+              id={option}
+              type="checkbox"
+              value={option}
+              checked={filters && filters.includes(option)}
+              onChange={e => addFilter(e.target.value, field)}
+            />
+            <label htmlFor={option}>
+              {option}
+            </label>
+        </div>
+        ))}
       </div>
-      ))}
+     
     </div>
   </div>
 )};
