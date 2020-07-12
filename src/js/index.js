@@ -31,7 +31,10 @@ const App = () => {
     year: [],
     genre: [],
     type: [],
-  })
+    title: "",
+  });
+
+  const [ searchTerm, setSearchTerm ] = useState();
 
   useEffect(() => {
     fetch('https://hubspotwebteam.github.io/CodeExercise/src/js/data/data.json')
@@ -104,14 +107,45 @@ const App = () => {
     });
   };
 
+  const search = (term) => {
+    // setFilters({
+    //   ...filters,
+    //   title: [term],
+    // })
+    
+    if (term.length < 3) return sortFilteredData(applyFilters());
+    const searchResults = filteredData.filter(item => {
+      return item.title.toLowerCase().includes(term);
+    });
+    sortFilteredData(searchResults);
+  };
+
+  // on filter -  apply filter, then apply search teem 
+  // on search - apply filters, then apply search 
+
   const applyFilters = () => {
     const filterKeys = Object.keys(filters);
     return originalData.filter(item => {
+      // return filterKeys.every(k => { 
+      //   console.log('k', k)
+        
+      //   return k==='year';
+      
+      // });
+
       return filterKeys.every(key => {
+        // console.log(filters);
+        if(key == 'title') console.log('yippee', filters[key].length);
+
         // return all as true if no filter set 
         if (!filters[key].length) return true;
-
         // Product field could be a string or an array 
+        // if (key) {
+        //   console.log( 'hello', key)
+        // };
+        // return true;
+
+        if (key == 'title') return item[key].toLowerCase().includes(filters[key].toLowerCase());
         if (typeof item[key] == 'string') return filters[key].includes(item[key]);
         return item[key].some(x => filters[key].includes(x));
       });
@@ -124,16 +158,10 @@ const App = () => {
       year: [],
       genre: [],
       type: [],
+      title: "",
     });
   };
 
-  const search = (term) => {
-    if (term.length < 3) return sortFilteredData(applyFilters());
-    const searchResults = filteredData.filter(item => {
-      return item.title.toLowerCase().includes(term);
-    });
-    sortFilteredData(searchResults);
-  };
 
   return (
     <div className="filterable-content">
