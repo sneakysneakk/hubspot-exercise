@@ -1,4 +1,8 @@
 @charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -87,7 +91,7 @@ body {
 button {
   display: inline-block;
   border: none;
-  padding: 5px;
+  padding: 10px;
   margin: 0;
   text-decoration: none;
   background: #f3f3f3;
@@ -106,8 +110,7 @@ button {
   -moz-appearance: none;
 }
 
-button:hover,
-button:focus {
+button:hover {
   background: #ccc;
 }
 
@@ -120,7 +123,7 @@ button:focus {
   position: absolute;
   transform: rotate(45deg);
   right: 30px;
-  top: 8px;
+  top: 9px;
 }
 
 .button--plain {
@@ -130,7 +133,7 @@ button:focus {
   text-decoration: underline;
   box-shadow: none;
 }
-.button--plain:hover, .button--plain:focus {
+.button--plain:hover {
   color: #ee752f;
   background-color: transparent;
 }
@@ -173,6 +176,35 @@ button:focus {
   }
 }
 
+.search-field {
+  position: relative;
+}
+.search-field:before {
+  content: "";
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  border: 2px solid #333;
+  position: absolute;
+  right: 15px;
+  top: 9px;
+}
+.search-field:after {
+  content: "";
+  height: 4px;
+  transform: rotate(-45deg);
+  border: 1px solid #333;
+  position: absolute;
+  right: 14px;
+  top: 20px;
+}
+.search-field input {
+  border: 1px solid #ccc;
+  height: 35px;
+  width: 190px;
+  padding: 10px 35px 10px 10px;
+}
+
 .tile {
   margin-bottom: 20px;
   width: 100%;
@@ -181,15 +213,21 @@ button:focus {
   max-width: 300px;
   margin: 0 auto;
 }
+.tile__genres {
+  font-size: 14px;
+  text-transform: capitalize;
+}
 .tile__image {
-  max-width: 100%;
+  width: 100%;
+  min-height: 400px;
+  border: 1px solid grey;
 }
 .tile__image--default {
   color: #fff;
-  height: 400px;
-  background-color: pink;
   padding: 20px;
-  background: url(https://placekitten.com/g/300/410);
+  width: auto;
+  background: url(https://placekitten.com/g/300/440);
+  text-shadow: 1px 1px #333;
 }
 
 .radio {

@@ -34,8 +34,6 @@ const App = () => {
     title: "",
   });
 
-  const [ searchTerm, setSearchTerm ] = useState();
-
   useEffect(() => {
     fetch('https://hubspotwebteam.github.io/CodeExercise/src/js/data/data.json')
     .then(res => res.json())
@@ -55,18 +53,13 @@ const App = () => {
 
   const clickOutsideListener = (ref, isOpen) => {
     useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
       function handleClickOutside(event) {
-          if (ref.current && isOpen && !ref.current.contains(event.target)) {
-              setDropdownOpen({
-                [ref.current.id]: false,
-              })
-          }
+        if (ref.current && isOpen && !ref.current.contains(event.target)) {
+            setDropdownOpen({
+              [ref.current.id]: false,
+            })
+        }
       }
-  
-      // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
           // Unbind the event listener on clean up
@@ -108,46 +101,25 @@ const App = () => {
   };
 
   const search = (term) => {
-    // setFilters({
-    //   ...filters,
-    //   title: [term],
-    // })
-    
-    if (term.length < 3) return sortFilteredData(applyFilters());
-    const searchResults = filteredData.filter(item => {
-      return item.title.toLowerCase().includes(term);
+    const newTerm = term < 3 ? '' : term;
+    setFilters({
+      ...filters,
+      title: newTerm,
     });
-    sortFilteredData(searchResults);
   };
-
-  // on filter -  apply filter, then apply search teem 
-  // on search - apply filters, then apply search 
 
   const applyFilters = () => {
     const filterKeys = Object.keys(filters);
     return originalData.filter(item => {
-      // return filterKeys.every(k => { 
-      //   console.log('k', k)
-        
-      //   return k==='year';
-      
-      // });
-
       return filterKeys.every(key => {
-        // console.log(filters);
-        if(key == 'title') console.log('yippee', filters[key].length);
 
         // return all as true if no filter set 
         if (!filters[key].length) return true;
-        // Product field could be a string or an array 
-        // if (key) {
-        //   console.log( 'hello', key)
-        // };
-        // return true;
-
         if (key == 'title') return item[key].toLowerCase().includes(filters[key].toLowerCase());
-        if (typeof item[key] == 'string') return filters[key].includes(item[key]);
-        return item[key].some(x => filters[key].includes(x));
+        if (key == 'genre') return item[key].some(x => filters[key].includes(x));
+        
+        return filters[key].includes(item[key]);
+        
       });
     });
   };
@@ -161,7 +133,6 @@ const App = () => {
       title: "",
     });
   };
-
 
   return (
     <div className="filterable-content">
@@ -213,13 +184,12 @@ const App = () => {
           </div>
         </div>
         <div className="filterable-content__search">
-          <input type="text" onChange={e=>search(e.target.value)}/>
-          <div>
-            <button className="button--plain" onClick={(e=>resetFilters(e))}>Clear filters</button>
+          <div className="search-field">
+            <input type="text" value={filters.title} onChange={e=>search(e.target.value)}/>
           </div>
+          <button className="button--plain" onClick={(e=>resetFilters(e))}>Clear filters</button>
         </div>       
       </div>
-       
         <ul className="filterable-content__items">
         { !filteredData.length && ( <h2>No results</h2>)}
         { filteredData && filteredData.map((item) => (
