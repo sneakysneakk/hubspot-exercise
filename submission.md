@@ -16,7 +16,6 @@ Close menu by clicking out
 Debounce the search field 
 
 
-
 ## How did you deviate from the directions, if at all, and why?
 
 _your answer here_
@@ -34,5 +33,7 @@ _your answer here_
 Filtered dynamically so that API changes wouldn't break features
 
 Originally did one state object with all needed but broke into multiple states 
+
+The image for the exorcist was broken so I replaced it with a kitten 
 
 Whoever made this exercise has good taste in films

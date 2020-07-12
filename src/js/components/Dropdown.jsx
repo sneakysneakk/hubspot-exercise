@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 const Dropdown = ({
   options,
@@ -8,11 +8,17 @@ const Dropdown = ({
   openDropdown,
   isOpen,
   filters,
+  clickListener,
   }) =>  { 
+
+  const dropdownRef = useRef(null);
+  clickListener(dropdownRef, isOpen);
+
   return (
-    <div className="dropdown">
+    <div className="dropdown" id={field} ref={dropdownRef}>
     <button
       className="button--arrow"
+      id={`${field}-button`}
       onClick={e=> openDropdown(e, field)} >
       {title}
     </button>

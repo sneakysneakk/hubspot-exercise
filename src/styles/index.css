@@ -184,6 +184,13 @@ button:focus {
 .tile__image {
   max-width: 100%;
 }
+.tile__image--default {
+  color: #fff;
+  height: 400px;
+  background-color: pink;
+  padding: 20px;
+  background: url(https://placekitten.com/g/300/410);
+}
 
 .radio {
   font-size: 14px;

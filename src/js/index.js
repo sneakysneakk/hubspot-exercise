@@ -50,6 +50,29 @@ const App = () => {
     setFilteredData(applyFilters());
   }, [filters]);
 
+  const clickOutsideListener = (ref, isOpen) => {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+          if (ref.current && isOpen && !ref.current.contains(event.target)) {
+              setDropdownOpen({
+                [ref.current.id]: false,
+              })
+          }
+      }
+  
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+          // Unbind the event listener on clean up
+          document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [dropdownOpen]);
+  };  
+
+
   const sortFilteredData = (data) => {
     setFilteredData(data.sort((a, b) => a.title.localeCompare(b.title)));
   };
@@ -57,8 +80,6 @@ const App = () => {
   const openDropdown = (e, field) => {
     e.preventDefault();
     setDropdownOpen({
-      year: false,
-      genre: false,
       [field]: true,
     })
   };
@@ -134,6 +155,7 @@ const App = () => {
             openDropdown={openDropdown}
             isOpen={dropdownOpen.year}
             filters={filters.year}
+            clickListener={clickOutsideListener}
           />
           <Dropdown
             options={genres}
@@ -144,6 +166,7 @@ const App = () => {
             openDropdown={openDropdown}
             isOpen={dropdownOpen.genre}
             filters={filters.genre}
+            clickListener={clickOutsideListener}
           />
 
           <div>

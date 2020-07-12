@@ -2,6 +2,7 @@ $color-orange:  rgb(238, 117, 47);
 $color-white: #fff;
 $color-blue: #00a4bd;
 $color-otherblue: #48a1dd;
+$color-silver: #ccc;
 
 $breakpoint-small: 768px;
 $breakpoint-medium: 1300px;
@@ -110,7 +111,7 @@ button {
   margin: 0;
   text-decoration: none;
   background: #f3f3f3;
-  box-shadow: 0 3px #ccc;
+  box-shadow: 0 3px $color-silver;
   color: #333;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
@@ -128,7 +129,7 @@ button {
 
 button:hover,
 button:focus {
-  background: #ccc;
+  background: $color-silver;
 }
 
 .button--arrow { 
@@ -212,6 +213,14 @@ button:focus {
 
   &__image {
     max-width: 100%;
+
+    &--default {
+      color: $color-white;
+      height: 400px;
+      background-color: pink;
+      padding: 20px;
+      background: url(https://placekitten.com/g/300/410);
+    }
   }
 }
 
@@ -226,8 +235,8 @@ button:focus {
   float: left;
   
   &__menu {
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: $color-white;
+    border: 1px solid $color-silver;
     font-size: 14px;
     font-weight: 700;
     position: absolute;
@@ -247,7 +256,7 @@ button:focus {
       content: '';
       border-left: 12px solid transparent;
       border-right: 12px solid transparent;
-      border-bottom: 12px solid #ccc;
+      border-bottom: 12px solid $color-silver;
       position: absolute;
       left: 12px;
       top: -12px;
@@ -256,7 +265,7 @@ button:focus {
       content: '';
       border-left: 11px solid transparent;
       border-right: 11px solid transparent;
-      border-bottom: 11px solid #fff;
+      border-bottom: 11px solid $color-white;
       position: absolute;
       left: 13px;
       top: -10px;
@@ -265,7 +274,7 @@ button:focus {
 }
 
 .checkbox {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid $color-silver;
 
   &:first-child {
     border-top: none;
