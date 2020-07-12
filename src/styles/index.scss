@@ -5,9 +5,9 @@ $color-otherblue: #48a1dd;
 $color-silver: #ccc;
 $color-grey: #333;
 
-$breakpoint-small: 768px;
-$breakpoint-medium: 1300px;
-$breakpoint-large: 768px;
+$breakpoint-small: 650px;
+$breakpoint-medium: 940px;
+$breakpoint-large: 1300px;
 
 // global styles
 
@@ -27,7 +27,9 @@ body {
   background-color: $color-blue;
 }
 
-.testimonial {
+
+// exercise 1
+body > div:nth-child(2) {
   background: #f8f8f8;
   color: #777;
   padding: 30px;
@@ -156,11 +158,10 @@ button:hover {
   min-height: 20px;
   padding: 0;
   text-decoration: underline;
-
+  text-align: right;
   &:hover {
     color: $color-orange;
     background-color: transparent;
-
   }
 };
 
@@ -168,16 +169,20 @@ button:hover {
   border: 1px solid $color-grey;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto 50px;
 
   &__header {
     border-bottom: 1px solid $color-grey;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     justify-content: space-between;
     padding: 20px 20px 30px;
     row-gap: 30px;
+
+    @media (min-width: $breakpoint-small) {
+      grid-template-columns: auto auto ;
+    }
   }
 
   &__filters button:first-child {
@@ -194,19 +199,22 @@ button:hover {
     margin: 0;
     padding: 10px;
 
-
     @media (min-width: $breakpoint-small) {
-      grid-template-columns: auto auto auto;
-      justify-content: space-between;
-
+      grid-template-columns: auto auto ;
     }
     @media (min-width: $breakpoint-medium) {
       grid-template-columns: auto auto auto;
+      justify-content: space-between;
     }
   }
 
-  &__clear { 
+  &__clear {
     text-align: right;
+    @media (min-width: $breakpoint-small) {
+      button {
+        text-align: right;
+      }
+    }
   }
 
   &__no-results {
@@ -217,7 +225,6 @@ button:hover {
 
 .search-field {
   position: relative;
-  // text-align: right;
 
   &:before {
     content: '';
@@ -242,8 +249,14 @@ button:hover {
   input {
     border: 1px solid $color-silver;
     height: 35px;
-    width: 190px;
+    width: 100%;
     padding: 10px 35px 10px 10px;
+
+
+    @media (min-width: $breakpoint-small) {
+      grid-template-columns: auto auto;
+      width: 190px;
+    }
   }
 }
 
@@ -278,9 +291,11 @@ button:hover {
 }
 
 .radio {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: capitalize;
+  margin-right: 10px;
+  
 }
 
 .dropdown {

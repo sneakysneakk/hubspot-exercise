@@ -16,29 +16,29 @@ body {
   background-color: #00a4bd;
 }
 
-.testimonial {
+body > div:nth-child(2) {
   background: #f8f8f8;
   color: #777;
   padding: 30px;
 }
-.testimonial > div {
+body > div:nth-child(2) > div {
   max-width: 810px;
   margin: 0 auto;
 }
 @media (min-width: 720px) {
-  .testimonial > div {
+  body > div:nth-child(2) > div {
     display: flex;
     align-items: center;
   }
 }
-.testimonial > div > div {
+body > div:nth-child(2) > div > div {
   padding: 30px 30px 0;
   margin: 0 0 30px;
   max-width: 500px;
   position: relative;
   border-left: 2px solid #ee752f;
 }
-.testimonial > div > div:before {
+body > div:nth-child(2) > div > div:before {
   background-color: #ee752f;
   border-radius: 50%;
   border: 2px solid #fff;
@@ -55,7 +55,7 @@ body {
   top: 0;
   width: 40px;
 }
-.testimonial > div > div:after {
+body > div:nth-child(2) > div > div:after {
   content: "";
   height: 10px;
   width: 10px;
@@ -65,17 +65,17 @@ body {
   bottom: 0;
   border-radius: 50%;
 }
-.testimonial > div > div > p {
+body > div:nth-child(2) > div > div > p {
   font-family: "Roboto Slab", serif;
   font-size: 20px;
   line-height: 28px;
   margin: 0 0 30px;
 }
-.testimonial > div > div > span {
+body > div:nth-child(2) > div > div > span {
   font-weight: 700;
   font-size: 16px;
 }
-.testimonial > div a {
+body > div:nth-child(2) > div a {
   display: inline-block;
   border-radius: 3px;
   background-color: #48a1dd;
@@ -133,6 +133,7 @@ button:hover {
   min-height: 20px;
   padding: 0;
   text-decoration: underline;
+  text-align: right;
 }
 .button--plain:hover {
   color: #ee752f;
@@ -143,16 +144,21 @@ button:hover {
   border: 1px solid #333;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto 50px;
 }
 .filterable-content__header {
   border-bottom: 1px solid #333;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
   justify-content: space-between;
   padding: 20px 20px 30px;
   row-gap: 30px;
+}
+@media (min-width: 650px) {
+  .filterable-content__header {
+    grid-template-columns: auto auto;
+  }
 }
 .filterable-content__filters button:first-child {
   margin-right: 20px;
@@ -166,19 +172,24 @@ button:hover {
   margin: 0;
   padding: 10px;
 }
-@media (min-width: 768px) {
+@media (min-width: 650px) {
+  .filterable-content__items {
+    grid-template-columns: auto auto;
+  }
+}
+@media (min-width: 940px) {
   .filterable-content__items {
     grid-template-columns: auto auto auto;
     justify-content: space-between;
   }
 }
-@media (min-width: 1300px) {
-  .filterable-content__items {
-    grid-template-columns: auto auto auto;
-  }
-}
 .filterable-content__clear {
   text-align: right;
+}
+@media (min-width: 650px) {
+  .filterable-content__clear button {
+    text-align: right;
+  }
 }
 .filterable-content__no-results {
   text-align: center;
@@ -210,8 +221,14 @@ button:hover {
 .search-field input {
   border: 1px solid #ccc;
   height: 35px;
-  width: 190px;
+  width: 100%;
   padding: 10px 35px 10px 10px;
+}
+@media (min-width: 650px) {
+  .search-field input {
+    grid-template-columns: auto auto;
+    width: 190px;
+  }
 }
 
 .tile {
@@ -240,9 +257,10 @@ button:hover {
 }
 
 .radio {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   text-transform: capitalize;
+  margin-right: 10px;
 }
 
 .dropdown {

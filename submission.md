@@ -17,15 +17,14 @@ Fuzzy search
 
 Would be nice to see a list of the filters you've applied, as not clear when dropdowns are closed 
 
+Custom radio buttons 
+
 
 ## How did you deviate from the directions, if at all, and why?
 
 _your answer here_
 
-Added a class for the first exercise - if I were to do it without adding the class I would : 
-
-but that seems gross and unrealistic 
-
+I really really wanted to add a class for exercise 1 but I did not. 
 
 
 ## Is there anything else you'd like to let us know?
