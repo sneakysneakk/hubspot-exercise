@@ -1,61 +1,11 @@
 $color-orange:  rgb(238, 117, 47);
 $color-white: #fff;
 $color-blue: #00a4bd;
+$color-otherblue: #48a1dd;
 
-// reset
-
-* {
-  // box-sizing: border-box;
-}
-button {
-  display: inline-block;
-  border: none;
-  padding: 5px;
-  margin: 0;
-  text-decoration: none;
-  background: #eee;
-  box-shadow: 0 3px #ccc;
-  color: #333;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: left;
-  text-transform: uppercase;
-  transition: background 250ms ease-in-out, 
-  transform 150ms ease;
-  min-width: 115px;
-  min-height: 35px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-button:hover,
-button:focus {
-  background: #ccc;
-}
-
-button:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
-}
-
-button:active {
-  transform: scale(0.99);
-}
-
-.button--plain {
-  background-color: transparent;
-  color: $color-blue;
-  padding: 0;
-  text-decoration: underline;
-  box-shadow: none;
-
-  &:hover {
-    color: blue;
-    background-color: transparent;
-
-  }
-}
+$breakpoint-small: 768px;
+$breakpoint-medium: 1300px;
+$breakpoint-large: 768px;
 
 // global styles
 
@@ -139,7 +89,7 @@ body {
     a {
       display: inline-block;
       border-radius: 3px;
-      background-color: #48a1dd;
+      background-color: $color-otherblue;
       color: $color-white;
       padding: 20px 30px;
       text-align: center;
@@ -151,8 +101,56 @@ body {
   }
 }
 
+// exercise 2
+
+button {
+  display: inline-block;
+  border: none;
+  padding: 5px;
+  margin: 0;
+  text-decoration: none;
+  background: #eee;
+  box-shadow: 0 3px #ccc;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  text-transform: uppercase;
+  transition: background 250ms ease-in-out, 
+  transform 150ms ease;
+  min-width: 115px;
+  min-height: 35px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+  background: #ccc;
+}
+
+.button--plain {
+  background-color: transparent;
+  color: $color-blue;
+  padding: 0;
+  text-decoration: underline;
+  box-shadow: none;
+
+  &:hover, &:focus {
+    color: $color-orange;
+    background-color: transparent;
+
+  }
+};
+
 .filterable-content {
   border: 1px solid grey;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  max-width: 1200px;
+  margin: 0 auto;
 
   &__header {
     display: grid;
@@ -171,6 +169,42 @@ body {
   &__search {
     text-align: right;
   }
+
+  &__items {
+    display: grid;
+    grid-template-columns: auto;
+    min-height: 500px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: $breakpoint-small) {
+      grid-template-columns: auto auto auto;
+    }
+    @media (min-width: $breakpoint-medium) {
+      grid-template-columns: auto auto auto;
+    }
+  }
+}
+
+.tile {
+  margin-bottom: 20px;
+  width: 100%;
+
+  &__content {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  &__image {
+    max-width: 100%;
+  }
+}
+
+.radio {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
 }
 
 .dropdown {
@@ -252,14 +286,5 @@ body {
     &:checked + label:before{
       background-color: $color-blue;
     }
-  }
-}
-
-.tile {
-  border: 1px solid grey;
-  width: 300px;
-
-  img {
-    max-width: 100%;
   }
 }

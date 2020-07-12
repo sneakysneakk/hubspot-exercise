@@ -21,6 +21,7 @@ const App = () => {
   const [ originalData, setOriginalData ] = useState([]);
   const [ loading, setLoading ] = useState(true);
   const [ years, setYears ] = useState([]);
+  const [ types, setTypes ] = useState([]);
   const [ genres, setGenres ] = useState([]);
   const [ dropdownOpen, setDropdownOpen ] = useState({
     year: false,
@@ -37,6 +38,7 @@ const App = () => {
     .then(res => res.json())
     .then(json => {
       setYears(getUniqueSet(json.media, 'year'));
+      setTypes(getUniqueSet(json.media, 'type'));
       setGenres(getGenreSet(json.media));
       setOriginalData(json.media);
       sortFilteredData(json.media);
@@ -61,13 +63,14 @@ const App = () => {
     })
   };
 
+  const addTypeFilter = (filter) => (
+    setFilters({
+      ...filters,
+      type: [filter],
+    }));
+
   const addFilter = (filter, field) => {
-    if (field === 'type') {
-      return setFilters({
-        ...filters,
-        type: [filter],
-      });
-    }
+   
 
     let newFilters = filters[field];
     let index = filters[field].indexOf(filter);
@@ -144,11 +147,20 @@ const App = () => {
             isOpen={dropdownOpen.genre}
             filters={filters.genre}
           />
-           <div onChange={(e)=> addFilter(e.target.value, 'type')}>
-            <input id="bookradio" type="radio" name="type" value="book" />
-            <label htmlFor="bookradio">Books</label>
-            <input id="movieradio" type="radio" name="type" value="movie" />
-            <label htmlFor="movieradio">Movies</label>
+
+          <div>
+          { types.map(x => (
+            <label className="radio">
+              <input
+                type="radio"
+                name="type"
+                value={x}
+                checked={filters.type[0] === x}
+                onChange={(e)=> addTypeFilter(e.target.value)}
+              />
+              {`${x}s`}
+            </label>
+          ))}
           </div>
         </div>
         <div className="filterable-content__search">
@@ -156,19 +168,10 @@ const App = () => {
           <div>
             <button className="button--plain" onClick={(e=>resetFilters(e))}>Clear filters</button>
           </div>
-        </div>
-
-       
-        {/* { data.types.map(x => (
-          <>
-            <input type="radio" name="type" value={x} />
-            <label>{x}</label>
-          </>
-        ))} */}
-       
+        </div>       
       </div>
        
-        <ul>
+        <ul className="filterable-content__items">
         { !filteredData.length && ( <h2>No results</h2>)}
         { filteredData && filteredData.map((item) => (
           <Tile

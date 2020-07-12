@@ -8,10 +8,12 @@ const Tile = ({
     genre,
   }}) => (
   <li className="tile">
-    <img src={poster} />
-    <div>{`${title} (${year})`}</div>
-    <div>Genres: 
-      { genre }
+    <div className="tile__content">
+      <img className="tile__image" src={poster} onError={ e => {console.log(e)}} />
+      <div>{`${title} (${year})`}</div>
+      <div>Genres: 
+        { genre }
+      </div>
     </div>
   </li>
 );
