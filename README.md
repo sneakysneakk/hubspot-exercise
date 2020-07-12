@@ -2,7 +2,6 @@
 
 #### **Note - we updated this exercise on 03 July 2019. If you already started the previous version please refer to the previous [readme](https://github.com/HubSpotWebTeam/CodeExercise/blob/9a4a9ecafe5c5ef40d738d349ec58859920cba4b/README.md)**.
 
-
 Welcome to the HubSpot Web Team's coding exercise 👋
 
 Make sure you read these instructions carefully before you start. If you have any questions please reach out to your recruiting specialist.
@@ -15,7 +14,7 @@ The goal of this exercise is to create a simple app that;
 
 If you have any comments or feedback please include it in the `submission.md` file. This is your chance to tell us what you thought about the exercise and any ideas or issues you may have had. It's a good way for us to get to know you and your process. We want to hear from you!
 
-*Happy coding and good luck!*
+_Happy coding and good luck!_
 
 <br />
 
@@ -73,7 +72,7 @@ Using **CSS only**, style the provided HTML to match the design in the below ima
 
 - write neat, modular code.
 - use a pre-processor like **SASS** or
-**SCSS**.
+  **SCSS**.
 - use variables/mixins where appropriate.
 
 ---
@@ -117,7 +116,7 @@ Create the following interface using HTML, CSS & Javascript:
 
 Fill out the `submission.md` file before submitting. If you deviated from the instructions or have any feedback, that's the place to put it!
 
- Once complete, email either `(a)` **a zip of your work or** `(b)` **a link to your GitHub repository** to your recruiting specialist so they can forward it to the web team.
+Once complete, email either `(a)` **a zip of your work or** `(b)` **a link to your GitHub repository** to your recruiting specialist so they can forward it to the web team.
 
 **Note** - if you're going to host your project online, kudos to you! Please include that link in your submission - but don't forget to provide the zip/repository link so that we can take a look at your code.
 

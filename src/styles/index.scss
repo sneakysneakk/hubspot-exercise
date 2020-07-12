@@ -170,7 +170,6 @@ button:hover {
   max-width: 940px;
   margin: 0 10px 50px;
 
-
   @media (min-width: $breakpoint-medium) {
     margin: 0 auto 50px;
   }
@@ -212,7 +211,6 @@ button:hover {
   }
 
   &__clear {
-
     @media (min-width: $breakpoint-small) {
       text-align: right;
 
