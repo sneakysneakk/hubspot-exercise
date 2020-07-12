@@ -13,7 +13,7 @@
   "license": "ISC",
   "private": true,
   "husky": {
-    "pre-commit": "prettier --check ."
+    "pre-commit": "npx prettier --write ."
   },
   "dependencies": {
     "parcel-bundler": "^1.12.3",
