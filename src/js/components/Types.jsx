@@ -2,17 +2,17 @@ import React from "react";
 
 const Types = ({ options, onSelect, filters }) => (
   <div>
-    {options.map((x) => (
-      <label className="radio" key={x}>
+    {options.map((option) => (
+      <label className="radio" key={option}>
         <input
           type="radio"
           name="type"
-          value={x}
-          checked={filters === x}
+          value={option}
+          checked={filters === option}
           onChange={(e) => onSelect(e.target.value, "type")}
-          data-testid={`app-${x}-type`}
+          data-testid={`app-${option}-type`}
         />
-        {`${x}s`}
+        {`${option}s`}
       </label>
     ))}
   </div>
