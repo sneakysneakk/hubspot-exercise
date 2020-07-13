@@ -8,19 +8,15 @@ _your answer here_
 
 Added some more checks for clean data - being able to see the data I knew it was all clean but irl I would put in some checks for dodgy data
 
-Wouldn't like to manipulate the data that much client side
-
-Debounce the search field
+Debounce the search field so it doesn't search on every key stroke
 Add a minimum amount of chars for searching
 Fuzzy search
 
 Would be nice to see a list of the filters you've applied, as not clear when dropdowns are closed
 
-Custom radio buttons - using default and styling is not consistent across browsers
+Custom radio buttons
 
-Did some weird text-align:right styles on my clear button
-
-Would look into the performance a bit.
+I would look into the performance. I would prefer not to manipulate the data that much client side, so would prefer to create a service to get the options for the filters, rather than extracting them on front end.
 
 ## How did you deviate from the directions, if at all, and why?
 
@@ -31,6 +27,7 @@ _your answer here_
 _your answer here_
 
 I really really wanted to add a class for exercise 1 but I did not.
+It wasn't clear if I was allowed to add classes when it said "do not modify the DOM structure provided."
 
 I left it as books and movies instead on movies and books because alphabetical (everything else was alphabetical, why not this??)
 
