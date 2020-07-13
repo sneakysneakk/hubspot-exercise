@@ -32,9 +32,9 @@ body > div:nth-child(2) > div {
   }
 }
 body > div:nth-child(2) > div > div {
-  padding: 30px 30px 0;
   margin: 0 0 30px;
   max-width: 500px;
+  padding: 30px 30px 0;
   position: relative;
   border-left: 2px solid #ee752f;
 }
@@ -86,6 +86,11 @@ body > div:nth-child(2) > div a {
   text-decoration: none;
   font-size: 12px;
   font-weight: 700;
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 button {
@@ -279,17 +284,21 @@ button:hover {
 .dropdown__menu {
   background-color: #fff;
   border: 1px solid #ccc;
+  display: inline-block;
   font-size: 14px;
   font-weight: 700;
   position: absolute;
   left: 0;
   top: 50px;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   height: 265px;
   z-index: 1;
+  transition: all 300ms ease;
 }
 .dropdown__menu--open {
-  display: inline-block;
+  opacity: 1;
+  visibility: visible;
 }
 .dropdown__menu:before {
   content: "";

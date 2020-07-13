@@ -14,6 +14,7 @@ $breakpoint-large: 1300px;
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -43,10 +44,9 @@ body > div:nth-child(2) {
     }
 
     > div {
-      padding: 30px 30px 0;
-
       margin: 0 0 30px;
       max-width: 500px;
+      padding: 30px 30px 0;
       position: relative;
       border-left: 2px solid $color-orange;
 
@@ -108,6 +108,10 @@ body > div:nth-child(2) {
 }
 
 // exercise 2
+input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 
 button {
   display: inline-block;
@@ -310,17 +314,21 @@ button:hover {
   &__menu {
     background-color: $color-white;
     border: 1px solid $color-silver;
+    display: inline-block;
     font-size: 14px;
     font-weight: 700;
     position: absolute;
     left: 0;
     top: 50px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     height: 265px;
     z-index: 1;
+    transition: all 300ms ease;
 
     &--open {
-      display: inline-block;
+      opacity: 1;
+      visibility: visible;
     }
 
     &:before {

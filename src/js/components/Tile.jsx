@@ -5,7 +5,7 @@ const Tile = ({ content: { poster, title, year, genre } }) => {
 
   const formattedGenres = genre.join(", ");
   return (
-    <li className="tile">
+    <li className="tile" data-testid="app-tile">
       <div className="tile__content">
         {error && (
           <div className="tile__image tile__image--default">
