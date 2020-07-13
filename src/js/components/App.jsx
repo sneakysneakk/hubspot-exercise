@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Tile from "./Tile";
 import Dropdown from "./Dropdown";
 import Search from "./Search";
+import Types from "./Types";
+import Results from "./Results";
 import { getUniqueSet, getGenreSet } from "../helpers";
 
 const App = () => {
@@ -162,21 +163,12 @@ const App = () => {
               <Search val={filters.title} onSearch={updateFilters} />
             </div>
 
-            <div>
-              {filterOptions.types.map((x) => (
-                <label className="radio" key={x}>
-                  <input
-                    type="radio"
-                    name="type"
-                    value={x}
-                    checked={filters.type === x}
-                    onChange={(e) => updateFilters(e.target.value, "type")}
-                    data-testid={`app-${x}-type`}
-                  />
-                  {`${x}s`}
-                </label>
-              ))}
-            </div>
+            <Types
+              options={filterOptions.types}
+              onSelect={updateFilters}
+              filters={filters.type}
+            />
+
             <div className="filterable-content__clear">
               <button
                 className="button--plain"
@@ -186,22 +178,8 @@ const App = () => {
               </button>
             </div>
           </nav>
-          <section>
-            {!filteredData.length && (
-              <h3
-                className="filterable-content__no-results"
-                data-testid="app-no-results"
-              >
-                No results!! Try again
-              </h3>
-            )}
-            <ul className="filterable-content__items">
-              {filteredData &&
-                filteredData.map((item) => (
-                  <Tile key={item.title} content={item} />
-                ))}
-            </ul>
-          </section>
+
+          <Results results={filteredData} />
         </>
       )}
     </div>

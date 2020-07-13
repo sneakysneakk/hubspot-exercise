@@ -22,8 +22,6 @@ I could also some more checks for clean data - being able to see the data I knew
 
 ## How did you deviate from the directions, if at all, and why?
 
-
-
 ## Is there anything else you'd like to let us know?
 
 I really really wanted to add a class for exercise 1 but I did not.
