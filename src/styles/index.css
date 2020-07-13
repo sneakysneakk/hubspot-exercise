@@ -108,7 +108,7 @@ button {
   cursor: pointer;
   text-align: left;
   text-transform: uppercase;
-  transition: background 250ms ease-in-out, transform 150ms ease;
+  transition: background 250ms ease-in-out;
   min-width: 140px;
   min-height: 35px;
   -webkit-appearance: none;
@@ -136,6 +136,7 @@ button:hover {
   box-shadow: none;
   color: #00a4bd;
   min-height: 20px;
+  min-width: auto;
   padding: 0;
   text-decoration: underline;
 }
