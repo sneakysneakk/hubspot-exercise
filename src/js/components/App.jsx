@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tile from "./Tile";
 import Dropdown from "./Dropdown";
+import Search from "./Search";
 import { getUniqueSet, getGenreSet } from "../helpers";
 
 const App = () => {
@@ -158,15 +159,7 @@ const App = () => {
             </div>
 
             <div className="filterable-content__search">
-              <div className="search-field">
-                <input
-                  type="search"
-                  placeholder="search..."
-                  value={filters.title}
-                  onChange={(e) => updateFilters(e.target.value, "title")}
-                  data-testid="app-search-input"
-                />
-              </div>
+              <Search val={filters.title} onSearch={updateFilters} />
             </div>
 
             <div>
