@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 
 const Dropdown = ({
   options,
@@ -22,15 +22,18 @@ const Dropdown = ({
       >
         {title}
       </button>
-      <div className={`dropdown__menu ${isOpen ? "dropdown__menu--open" : ""}`}>
+      <div
+        tabIndex="0"
+        className={`dropdown__menu ${isOpen ? "dropdown__menu--open" : ""}`}
+      >
         <div className="dropdown__scrollarea">
           {options &&
             options.map((option) => (
               <div className="checkbox" key={option}>
                 <input
-                  id={option}
                   type="checkbox"
                   value={option}
+                  tabIndex="0"
                   checked={filters && filters.includes(option)}
                   onChange={(e) => addFilter(e.target.value, field)}
                 />

@@ -195,8 +195,6 @@ button:hover {
     display: grid;
     grid-template-columns: auto;
     align-content: space-around;
-
-    // min-height: 530px;
     list-style: none;
     margin: 0;
     padding: 10px;
@@ -348,6 +346,7 @@ button:hover {
 
 .checkbox {
   border-top: 1px solid $color-silver;
+  position: relative;
 
   &:first-child {
     border-top: none;
@@ -377,10 +376,18 @@ button:hover {
   }
 
   input {
-    display: none;
+    height: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 0;
 
     &:checked + label:before {
       background-color: $color-blue;
+    }
+    &:focus + label {
+      background-color: #eee;
     }
   }
 }

@@ -312,6 +312,7 @@ button:hover {
 
 .checkbox {
   border-top: 1px solid #ccc;
+  position: relative;
 }
 .checkbox:first-child {
   border-top: none;
@@ -337,10 +338,18 @@ button:hover {
   top: 12px;
 }
 .checkbox input {
-  display: none;
+  height: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
 }
 .checkbox input:checked + label:before {
   background-color: #00a4bd;
+}
+.checkbox input:focus + label {
+  background-color: #eee;
 }
 
 /*# sourceMappingURL=index.css.map */

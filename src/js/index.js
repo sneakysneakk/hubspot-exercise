@@ -36,12 +36,12 @@ export const App = () => {
   useEffect(() => {
     fetch("https://hubspotwebteam.github.io/CodeExercise/src/js/data/data.json")
       .then((res) => res.json())
-      .then((json) => {
-        setYears(getUniqueSet(json.media, "year"));
-        setTypes(getUniqueSet(json.media, "type"));
-        setGenres(getGenreSet(json.media));
-        setOriginalData(json.media);
-        sortFilteredData(json.media);
+      .then(({ media }) => {
+        setYears(getUniqueSet(media, "year"));
+        setTypes(getUniqueSet(media, "type"));
+        setGenres(getGenreSet(media));
+        setOriginalData(media);
+        sortFilteredData(media);
         setLoading(false);
       });
   }, []);
@@ -67,6 +67,7 @@ export const App = () => {
     }, [dropdownOpen]);
   };
 
+  // Alphabetise the results
   const sortFilteredData = (data) => {
     setFilteredData(data.sort((a, b) => a.title.localeCompare(b.title)));
   };
@@ -78,13 +79,13 @@ export const App = () => {
     });
   };
 
-  const addFilter = (filter, field) =>
+  const updateFilters = (filter, field) =>
     setFilters({
       ...filters,
       [field]: filter,
     });
 
-  const addDropdownFilter = (filter, field) => {
+  const updateCheckboxFilters = (filter, field) => {
     let newFilters = filters[field];
     let index = filters[field].indexOf(filter);
     if (index >= 0) {
@@ -100,16 +101,18 @@ export const App = () => {
 
   const applyFilters = () => {
     const filterKeys = Object.keys(filters);
-    return originalData.filter((item) => {
+    return originalData.filter((mediaItem) => {
       return filterKeys.every((key) => {
         // return all as true if no filter set
         if (!filters[key].length) return true;
 
         if (key == "title")
-          return item[key].toLowerCase().includes(filters[key].toLowerCase());
+          return mediaItem[key]
+            .toLowerCase()
+            .includes(filters[key].toLowerCase());
         if (key == "genre")
-          return item[key].some((x) => filters[key].includes(x));
-        return filters[key].includes(item[key]);
+          return mediaItem[key].some((x) => filters[key].includes(x));
+        return filters[key].includes(mediaItem[key]);
       });
     });
   };
@@ -133,7 +136,7 @@ export const App = () => {
             <div className="filterable-content__filters">
               <Dropdown
                 options={genres}
-                addFilter={addDropdownFilter}
+                addFilter={updateCheckboxFilters}
                 field="genre"
                 value={filters.genre}
                 title="Genre"
@@ -144,7 +147,7 @@ export const App = () => {
               />
               <Dropdown
                 options={years}
-                addFilter={addDropdownFilter}
+                addFilter={updateCheckboxFilters}
                 field="year"
                 value={filters.year}
                 title="Year"
@@ -160,7 +163,7 @@ export const App = () => {
                 <input
                   type="text"
                   value={filters.title}
-                  onChange={(e) => addFilter(e.target.value, "title")}
+                  onChange={(e) => updateFilters(e.target.value, "title")}
                 />
               </div>
             </div>
@@ -173,7 +176,7 @@ export const App = () => {
                     name="type"
                     value={x}
                     checked={filters.type === x}
-                    onChange={(e) => addFilter(e.target.value, "type")}
+                    onChange={(e) => updateFilters(e.target.value, "type")}
                   />
                   {`${x}s`}
                 </label>

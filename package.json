@@ -5,7 +5,7 @@
   "main": "./build/index.js",
   "scripts": {
     "dev": "parcel src/views/index.html --open --out-dir build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "prod": "parcel build src/index.html --out-dir build",
     "styles": "sass --watch src/styles/index.scss src/styles/index.css"
   },
@@ -25,11 +25,15 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.5",
+    "babel-jest": "^26.1.0",
     "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "prettier": "2.0.5",
+    "react-test-renderer": "^16.13.1",
     "sass": "^1.26.8"
   }
 }
