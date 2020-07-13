@@ -84,7 +84,7 @@ describe("App", () => {
     expect(queryByTestId("app-loading")).toBeFalsy();
   });
 
-  test.only("opens menu when button is clicked", async () => {
+  test("opens menu when button is clicked", async () => {
     const { queryByTestId } = render(<App />);
     await act(fetch);
 
