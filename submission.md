@@ -22,7 +22,7 @@ I could also some more checks for clean data - being able to see the data I knew
 
 ## How did you deviate from the directions, if at all, and why?
 
-I don't believe so.
+
 
 ## Is there anything else you'd like to let us know?
 
