@@ -88,9 +88,6 @@ const App = () => {
 
   return (
     <div className="filterable-content">
-      {console.log("og", originalData)}
-      {console.log("filtered", filteredData)}
-
       {loading && <div data-testid="app-loading">Loading</div>}
       {error && <div data-testid="app-error">Error!</div>}
       {!loading && !error && (
