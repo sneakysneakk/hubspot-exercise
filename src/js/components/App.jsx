@@ -3,37 +3,33 @@ import Dropdown from "./Dropdown";
 import Search from "./Search";
 import Types from "./Types";
 import Results from "./Results";
-import { getUniqueSet, getGenreSet } from "../helpers";
+import { getFilterOptions, sortAlphabetically } from "../helpers";
 
 const App = () => {
+  const defaultFilters = {
+    year: [],
+    genre: [],
+    type: "",
+    title: "",
+  };
   const [filteredData, setFilteredData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [filters, setFilters] = useState(defaultFilters);
   const [filterOptions, setFilterOptions] = useState({
     year: [],
     types: [],
     genre: [],
   });
 
-  const [filters, setFilters] = useState({
-    year: [],
-    genre: [],
-    type: "",
-    title: "",
-  });
-
   useEffect(() => {
     fetch("https://hubspotwebteam.github.io/CodeExercise/src/js/data/data.json")
       .then((res) => res.json())
       .then(({ media }) => {
-        setFilterOptions({
-          year: getUniqueSet(media, "year"),
-          types: getUniqueSet(media, "type"),
-          genre: getGenreSet(media),
-        });
+        setFilterOptions(getFilterOptions(media));
         setOriginalData(media);
-        sortFilteredData(media);
+        setFilteredData(sortAlphabetically(media));
         setLoading(false);
       })
       .catch(() => {
@@ -46,11 +42,6 @@ const App = () => {
   useEffect(() => {
     setFilteredData(applyFilters());
   }, [filters]);
-
-  // Alphabetise the results
-  const sortFilteredData = (data) => {
-    setFilteredData(data.sort((a, b) => a.title.localeCompare(b.title)));
-  };
 
   const updateFilters = (filter, field) =>
     setFilters({
@@ -92,12 +83,7 @@ const App = () => {
 
   const resetFilters = (e) => {
     e.preventDefault();
-    setFilters({
-      year: [],
-      genre: [],
-      type: "",
-      title: "",
-    });
+    setFilters(defaultFilters);
   };
 
   return (
@@ -114,8 +100,7 @@ const App = () => {
                   options={filterOptions[option]}
                   addFilter={updateCheckboxFilters}
                   field={option}
-                  value={filters[option]}
-                  filters={filters[option]}
+                  activeFilters={filters[option]}
                 />
               ))}
             </div>

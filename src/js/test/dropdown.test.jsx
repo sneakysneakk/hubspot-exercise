@@ -6,11 +6,7 @@ const props = {
   options: ["one", "happy", "little", "cat"],
   addFilter: jest.fn(),
   field: "test",
-  title: "Year",
-  openDropdown: jest.fn(),
-  isOpen: false,
-  filters: [],
-  clickListener: jest.fn(),
+  activeFilters: [],
 };
 
 describe("Dropdown", () => {

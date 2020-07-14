@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
-const Dropdown = ({ options, addFilter, field, filters }) => {
+const Dropdown = ({ options, addFilter, field, activeFilters }) => {
   const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -40,7 +40,7 @@ const Dropdown = ({ options, addFilter, field, filters }) => {
                   id={option}
                   type="checkbox"
                   value={option}
-                  checked={filters && filters.includes(option)}
+                  checked={activeFilters.includes(option)}
                   onChange={(e) => addFilter(e.target.value, field)}
                   data-testid="app-checkbox"
                 />
