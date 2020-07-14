@@ -11,9 +11,9 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [filterOptions, setFilterOptions] = useState({
-    years: [],
+    year: [],
     types: [],
-    genres: [],
+    genre: [],
   });
 
   const [filters, setFilters] = useState({
@@ -28,9 +28,9 @@ const App = () => {
       .then((res) => res.json())
       .then(({ media }) => {
         setFilterOptions({
-          years: getUniqueSet(media, "year"),
+          year: getUniqueSet(media, "year"),
           types: getUniqueSet(media, "type"),
-          genres: getGenreSet(media),
+          genre: getGenreSet(media),
         });
         setOriginalData(media);
         sortFilteredData(media);
@@ -108,22 +108,15 @@ const App = () => {
         <>
           <nav className="filterable-content__header">
             <div className="filterable-content__filters">
-              <Dropdown
-                options={filterOptions.genres}
-                addFilter={updateCheckboxFilters}
-                field="genre"
-                value={filters.genre}
-                title="Genre"
-                filters={filters.genre}
-              />
-              <Dropdown
-                options={filterOptions.years}
-                addFilter={updateCheckboxFilters}
-                field="year"
-                value={filters.year}
-                title="Year"
-                filters={filters.year}
-              />
+              {["genre", "year"].map((option) => (
+                <Dropdown
+                  options={filterOptions[option]}
+                  addFilter={updateCheckboxFilters}
+                  field={option}
+                  value={filters[option]}
+                  filters={filters[option]}
+                />
+              ))}
             </div>
 
             <div className="filterable-content__search">

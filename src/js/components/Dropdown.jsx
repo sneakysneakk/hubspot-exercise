@@ -1,12 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 
-const Dropdown = ({ options, addFilter, field, title, filters }) => {
-  const dropdownRef = useRef();
+const Dropdown = ({ options, addFilter, field, filters }) => {
+  const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClick);
-
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
@@ -25,9 +24,9 @@ const Dropdown = ({ options, addFilter, field, title, filters }) => {
         data-testid={`app-${field}-button`}
         className="button--arrow"
         id={`${field}-button`}
-        onClick={(e) => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen(!isOpen)}
       >
-        {title}
+        {field}
       </button>
       <div
         className={`dropdown__menu ${isOpen ? "dropdown__menu--open" : ""}`}
