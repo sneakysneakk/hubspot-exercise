@@ -28,8 +28,8 @@ const App = () => {
       .then((res) => res.json())
       .then(({ media }) => {
         setFilterOptions(getFilterOptions(media));
-        setOriginalData(media);
-        setFilteredData(sortAlphabetically(media));
+        setOriginalData(sortAlphabetically(media));
+        setFilteredData(media);
         setLoading(false);
       })
       .catch(() => {
@@ -88,6 +88,9 @@ const App = () => {
 
   return (
     <div className="filterable-content">
+      {console.log("og", originalData)}
+      {console.log("filtered", filteredData)}
+
       {loading && <div data-testid="app-loading">Loading</div>}
       {error && <div data-testid="app-error">Error!</div>}
       {!loading && !error && (
