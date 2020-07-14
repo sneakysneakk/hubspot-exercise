@@ -15,10 +15,7 @@ const App = () => {
     types: [],
     genres: [],
   });
-  const [dropdownOpen, setDropdownOpen] = useState({
-    year: false,
-    genre: false,
-  });
+
   const [filters, setFilters] = useState({
     year: [],
     genre: [],
@@ -50,33 +47,9 @@ const App = () => {
     setFilteredData(applyFilters());
   }, [filters]);
 
-  const clickOutsideListener = (ref, isOpen) => {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && isOpen && !ref.current.contains(event.target)) {
-          setDropdownOpen({
-            [ref.current.id]: false,
-          });
-        }
-      }
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [dropdownOpen]);
-  };
-
   // Alphabetise the results
   const sortFilteredData = (data) => {
     setFilteredData(data.sort((a, b) => a.title.localeCompare(b.title)));
-  };
-
-  const openDropdown = (e, field) => {
-    e.preventDefault();
-    setDropdownOpen({
-      [field]: true,
-    });
   };
 
   const updateFilters = (filter, field) =>
@@ -141,10 +114,7 @@ const App = () => {
                 field="genre"
                 value={filters.genre}
                 title="Genre"
-                openDropdown={openDropdown}
-                isOpen={dropdownOpen.genre}
                 filters={filters.genre}
-                clickListener={clickOutsideListener}
               />
               <Dropdown
                 options={filterOptions.years}
@@ -152,10 +122,7 @@ const App = () => {
                 field="year"
                 value={filters.year}
                 title="Year"
-                openDropdown={openDropdown}
-                isOpen={dropdownOpen.year}
                 filters={filters.year}
-                clickListener={clickOutsideListener}
               />
             </div>
 
