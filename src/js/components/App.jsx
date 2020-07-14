@@ -110,6 +110,7 @@ const App = () => {
             <div className="filterable-content__filters">
               {["genre", "year"].map((option) => (
                 <Dropdown
+                  key={option}
                   options={filterOptions[option]}
                   addFilter={updateCheckboxFilters}
                   field={option}
