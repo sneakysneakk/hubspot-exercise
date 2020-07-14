@@ -77,6 +77,18 @@ describe("App", () => {
     expect(queryByTestId("app-no-results")).toBeTruthy();
   });
 
+  test("returns to original list when 'clear' button is clicked", async () => {
+    const { queryByTestId, queryByText, getAllByTestId } = render(<App />);
+    await act(fetch);
+    fireEvent.click(queryByText("action"));
+    fireEvent.click(queryByTestId("app-book-type"));
+    expect(queryByTestId("app-tile")).toBeFalsy();
+
+    fireEvent.click(queryByTestId("app-clear-filters"));
+
+    expect(getAllByTestId("app-tile")).toHaveLength(30);
+  });
+
   test("shows 'loading' until request has finished", async () => {
     const { queryByTestId } = render(<App />);
     expect(queryByTestId("app-loading")).toBeTruthy();

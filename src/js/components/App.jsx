@@ -134,6 +134,7 @@ const App = () => {
               <button
                 className="button--plain"
                 onClick={(e) => resetFilters(e)}
+                data-testid="app-clear-filters"
               >
                 Clear filters
               </button>
