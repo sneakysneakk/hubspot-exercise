@@ -64,7 +64,7 @@ Using **CSS only**, style the provided HTML to match the design in the below ima
 
 **Requirements:**
 
-[] do not modify the DOM structure provided.
+[x] do not modify the DOM structure provided.
 [] do not use any CSS frameworks (e.g. **Bootstrap**).
 [] the design must be responsive - use whatever number of breakpoints you think are necessary. You're free to choose whatever breakpoint values you think work best.
 
