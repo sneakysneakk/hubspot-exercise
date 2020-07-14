@@ -64,9 +64,9 @@ Using **CSS only**, style the provided HTML to match the design in the below ima
 
 **Requirements:**
 
-- do not modify the DOM structure provided.
-- do not use any CSS frameworks (e.g. **Bootstrap**).
-- the design must be responsive - use whatever number of breakpoints you think are necessary. You're free to choose whatever breakpoint values you think work best.
+- [x] do not modify the DOM structure provided.
+- [x] do not use any CSS frameworks (e.g. **Bootstrap**).
+- [x] the design must be responsive - use whatever number of breakpoints you think are necessary. You're free to choose whatever breakpoint values you think work best.
 
 **Bonus Points:**
 
@@ -85,16 +85,16 @@ Create the following interface using HTML, CSS & Javascript:
 
 **Requirements:**
 
-- all of the metadata and images in the mockup can be retrieved from this [endpoint](https://hubspotwebteam.github.io/CodeExercise/src/js/data/data.json) in `JSON` format. You must use this api to retrieve the data.
-- the grid items should be sorted alphabetically by `Title` by default.
-- the `Movies` / `Books` radio buttons should be cleared by default, but once selected can only be toggled between one another. They should be cleared by the `CLEAR FILTERS` button.
-- the `GENRE` / `YEAR` dropdowns should match the mockup. If multiple check-boxes are checked, items from **all** checked categories should appear. E.g. if `action` and `comedy` are both selected, the list should show items with **either** of those tags.
-- `CLEAR FILTERS` should clear all filters and return the list to it's original default state.
-- The `search` field should filter by `Title`. It should be case insensitive.
-- write clean, reusable, DRY code.
-- the design must be responsive - use whatever number of breakpoints you think are necessary. You're free to choose whatever breakpoint values you think work best.
-- do not use CSS frameworks (e.g. Bootstrap). You can (and we encourage you to) use pre-processors like SASS or SCSS.
-- Have fun! If you get stuck don't worry, just do as much as you can.
+- [x] all of the metadata and images in the mockup can be retrieved from this [endpoint](https://hubspotwebteam.github.io/CodeExercise/src/js/data/data.json) in `JSON` format. You must use this api to retrieve the data.
+- [x] the grid items should be sorted alphabetically by `Title` by default.
+- [x] the `Movies` / `Books` radio buttons should be cleared by default, but once selected can only be toggled between one another. They should be cleared by the `CLEAR FILTERS` button.
+- [x] the `GENRE` / `YEAR` dropdowns should match the mockup. If multiple check-boxes are checked, items from **all** checked categories should appear. E.g. if `action` and `comedy` are both selected, the list should show items with **either** of those tags.
+- [x] `CLEAR FILTERS` should clear all filters and return the list to it's original default state.
+- [x] The `search` field should filter by `Title`. It should be case insensitive.
+- [x] write clean, reusable, DRY code.
+- [x] the design must be responsive - use whatever number of breakpoints you think are necessary. You're free to choose whatever breakpoint values you think work best.
+- [x] do not use CSS frameworks (e.g. Bootstrap). You can (and we encourage you to) use pre-processors like SASS or SCSS.
+- [x] Have fun! If you get stuck don't worry, just do as much as you can.
 
 **Bonus Points:**
 
