@@ -1,7 +1,7 @@
 import React from "react";
 import Tile from "./Tile";
 
-const Types = ({ results }) => (
+const Results = ({ results }) => (
   <section>
     {!results.length && (
       <h3
@@ -19,4 +19,4 @@ const Types = ({ results }) => (
   </section>
 );
 
-export default Types;
+export default Results;
